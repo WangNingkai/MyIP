@@ -1,4 +1,6 @@
-import { get } from 'https';
+
+import { parse } from 'dotenv';
+import { refererCheck } from '../common/referer-check.js';
 
 // 创建一个用于设置 headers 的通用函数
 function createFetchOptions() {
@@ -90,20 +92,46 @@ function isValidASN(asn) {
     return /^[0-9]+$/.test(asn);
 };
 
+
+// 格式化输出
+
+function formatData(data) {
+    const { asnName, asnOrgName, estimatedUsers, IPv4_Pct, IPv6_Pct, HTTP_Pct, HTTPS_Pct, Desktop_Pct, Mobile_Pct, Bot_Pct, Human_Pct } = data;
+    const formattedData = {
+        asnName,
+        asnOrgName,
+        estimatedUsers: parseFloat(estimatedUsers).toLocaleString(),
+        IPv4_Pct: `${parseFloat(IPv4_Pct).toFixed(2)}%`,
+        IPv6_Pct: `${parseFloat(IPv6_Pct).toFixed(2)}%`,
+        HTTP_Pct: `${parseFloat(HTTP_Pct).toFixed(2)}%`,
+        HTTPS_Pct: `${parseFloat(HTTPS_Pct).toFixed(2)}%`,
+        Desktop_Pct: `${parseFloat(Desktop_Pct).toFixed(2)}%`,
+        Mobile_Pct: `${parseFloat(Mobile_Pct).toFixed(2)}%`,
+        Bot_Pct: `${parseFloat(Bot_Pct).toFixed(2)}%`,
+        Human_Pct: `${parseFloat(Human_Pct).toFixed(2)}%`
+    };
+
+    return formattedData;
+
+}
+
+// 过滤不存在的字段
+function filterData(data) {
+    for (const key in data) {
+        if (data[key] === 'NaN' || data[key] === 'NaN%') {
+            delete data[key];
+        }
+    }
+    return data;
+}
+
 // 导出函数
 export default async (req, res) => {
 
     // 限制只能从指定域名访问
-    const allowedDomains = ['localhost', ...(process.env.ALLOWED_DOMAINS || '').split(',')];
     const referer = req.headers.referer;
-
-    if (referer) {
-        const domain = new URL(referer).hostname;
-        if (!allowedDomains.includes(domain)) {
-            return res.status(403).json({ error: 'Access denied' });
-        }
-    } else {
-        return res.status(403).json({ error: 'What are you doing?' });
+    if (!refererCheck(referer)) {
+        return res.status(403).json({ error: referer ? 'Access denied' : 'What are you doing?' });
     }
 
     const asn = req.query.asn;
@@ -146,8 +174,10 @@ export default async (req, res) => {
         }
 
         const cleanedResponse = cleanUpResponseData(response);
+        const finalResponse = formatData(cleanedResponse);
+        filterData(finalResponse);
 
-        res.json(cleanedResponse);
+        res.json(finalResponse);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
