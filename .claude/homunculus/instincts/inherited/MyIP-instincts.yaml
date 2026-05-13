@@ -1,0 +1,567 @@
+# Instincts generated from https://github.com/WangNingkai/MyIP
+# Generated: 2026-05-13T05:12:24.149Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: MyIP-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Commit Length
+
+## Action
+
+Keep commit messages concise (~37 characters)
+
+## Evidence
+
+- Average commit message length: 37 chars
+- Based on 19 commits
+
+---
+id: MyIP-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: MyIP-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: MyIP-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: MyIP-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: MyIP-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.js
+
+## Evidence
+
+- File pattern: *.test.js
+- Consistent across test files
+
+---
+id: MyIP-test-types
+trigger: "when planning tests for a feature"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Test Types
+
+## Action
+
+Write unit, integration tests to match project standards
+
+## Evidence
+
+- Test types detected: unit, integration
+- Coverage config: no
+
+---
+id: MyIP-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~9x per month
+- Files: frontend/components/*, frontend/components/widgets/*, frontend/components/ip-infos/*
+
+---
+id: MyIP-workflow-add-or-enhance-api-endpoint
+trigger: "when doing add or enhance api endpoint"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Workflow Add Or Enhance Api Endpoint
+
+## Action
+
+Follow the add-or-enhance-api-endpoint workflow:
+1. Create or update api/handler.js for the new endpoint
+2. Modify backend-server.js to register the new route or middleware
+3. Update or create documentation in api/AGENTS.md (and/or AGENTS.md)
+4. If needed, update .env.example for new environment variables
+5. Update frontend components to consume the new endpoint
+6. Update frontend/data/changelog.json and package.json version
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: api/*.js, backend-server.js, api/AGENTS.md
+
+---
+id: MyIP-workflow-feature-development-with-i18n-and-tests
+trigger: "when doing feature development with i18n and tests"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Workflow Feature Development With I18n And Tests
+
+## Action
+
+Follow the feature-development-with-i18n-and-tests workflow:
+1. Edit or create frontend/components/*.vue files for the feature
+2. Update frontend/locales/en.json, fr.json, tr.json, zh.json with new or changed strings
+3. Update or add relevant test files (tests/*.js)
+4. Update frontend/data/changelog.json if the feature is user-facing
+5. Update package.json version if needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: frontend/components/**/*.vue, frontend/locales/en.json, frontend/locales/fr.json
+
+---
+id: MyIP-workflow-ui-or-localization-improvement
+trigger: "when doing ui or localization improvement"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Workflow Ui Or Localization Improvement
+
+## Action
+
+Follow the ui-or-localization-improvement workflow:
+1. Edit frontend/components/*.vue or frontend/components/**/*.vue for UI changes
+2. Update one or more frontend/locales/*.json files
+3. Optionally update frontend/data/changelog.json
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: frontend/components/**/*.vue, frontend/locales/en.json, frontend/locales/fr.json
+
+---
+id: MyIP-workflow-cache-or-build-configuration-update
+trigger: "when doing cache or build configuration update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/WangNingkai/MyIP
+---
+
+# MyIP Workflow Cache Or Build Configuration Update
+
+## Action
+
+Follow the cache-or-build-configuration-update workflow:
+1. Edit frontend-server.js or backend-server.js for cache headers
+2. Modify or remove frontend/utils/register-service-worker.js or unregister-service-worker.js
+3. Update frontend/sw.js if service worker logic changes
+4. Edit vite.config.js or package.json for build adjustments
+5. Update documentation if needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: frontend-server.js, backend-server.js, frontend/sw.js
+
+---
+id: myip-camelcase-files
+trigger: "When creating or renaming a file"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Camelcase Files
+
+## Action
+
+Name the file using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.files
+- Files in frontend/components/ use camelCase
+
+---
+id: myip-camelcase-functions
+trigger: "When defining a function"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Camelcase Functions
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.functions
+
+---
+id: myip-pascalcase-classes
+trigger: "When defining a class"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Pascalcase Classes
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in namingConventions.classes
+
+---
+id: myip-screaming-snake-constants
+trigger: "When declaring a constant"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Screaming Snake Constants
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in namingConventions.constants
+
+---
+id: myip-relative-imports
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Relative Imports
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: myip-named-exports
+trigger: "When exporting from a module"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Named Exports
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: myip-try-catch-errors
+trigger: "When handling errors in code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Try Catch Errors
+
+## Action
+
+Use try-catch blocks for error handling
+
+## Evidence
+
+- Pattern in errorHandling.style: try-catch
+
+---
+id: myip-unit-integration-tests
+trigger: "When writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Unit Integration Tests
+
+## Action
+
+Write both unit and integration tests as appropriate
+
+## Evidence
+
+- Pattern in testTypes: unit, integration
+- Files matching *.test.js
+
+---
+id: myip-test-file-pattern
+trigger: "When creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Test File Pattern
+
+## Action
+
+Name the file with the pattern *.test.js
+
+## Evidence
+
+- Pattern in testing.filePattern: *.test.js
+
+---
+id: myip-git-commit-prefix
+trigger: "When making a commit"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Git Commit Prefix
+
+## Action
+
+Prefix the commit message with feat, fix, or refactor as appropriate
+
+## Evidence
+
+- Seen in commit: Feat(api): default /api/* responses to Cache-Control: no-store
+- Seen in commit: Fix(build): silence INEFFECTIVE_DYNAMIC_IMPORT for @iconify/vue
+- Pattern in commits.prefixes
+
+---
+id: myip-git-commit-format
+trigger: "When writing a commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Git Commit Format
+
+## Action
+
+Use the format <type>(<scope>): <description>
+
+## Evidence
+
+- Seen in commit: Refactor(cache): drop service worker, add explicit Cache-Control on static assets
+- Pattern in commits.examples
+
+---
+id: myip-workflow-add-api-endpoint
+trigger: "When adding or enhancing an API endpoint"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Workflow Add Api Endpoint
+
+## Action
+
+Create or update api/handler.js, update backend-server.js, update documentation, update .env.example if needed, update frontend components, and update changelog and package.json version
+
+## Evidence
+
+- Workflow: add-or-enhance-api-endpoint
+- Files involved: api/*.js, backend-server.js, AGENTS.md, .env.example, frontend/components/**/*.vue, frontend/data/changelog.json, package.json
+
+---
+id: myip-workflow-feature-i18n-test
+trigger: "When developing or refactoring a feature that affects the UI and needs localization and testing"
+confidence: 0.93
+domain: workflow
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Workflow Feature I18n Test
+
+## Action
+
+Edit or create Vue components, update all relevant locale JSON files, update or add tests, update changelog if user-facing, and update package.json version if needed
+
+## Evidence
+
+- Workflow: feature-development-with-i18n-and-tests
+- Files involved: frontend/components/**/*.vue, frontend/locales/*.json, tests/*.js, frontend/data/changelog.json, package.json
+
+---
+id: myip-workflow-ui-i18n-improve
+trigger: "When making minor UI or localization improvements"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Workflow Ui I18n Improve
+
+## Action
+
+Edit Vue component(s), update one or more locale JSON files, and optionally update changelog
+
+## Evidence
+
+- Workflow: ui-or-localization-improvement
+- Files involved: frontend/components/**/*.vue, frontend/locales/*.json, frontend/data/changelog.json
+
+---
+id: myip-workflow-cache-build-update
+trigger: "When updating cache strategies, service worker logic, or build configuration"
+confidence: 0.88
+domain: workflow
+source: repo-analysis
+source_repo: WangNingkai/MyIP
+---
+
+# Myip Workflow Cache Build Update
+
+## Action
+
+Edit frontend-server.js or backend-server.js for cache headers, modify or remove service worker registration files, update frontend/sw.js, edit vite.config.js or package.json, and update documentation if needed
+
+## Evidence
+
+- Workflow: cache-or-build-configuration-update
+- Files involved: frontend-server.js, backend-server.js, frontend/sw.js, frontend/utils/register-service-worker.js, frontend/utils/unregister-service-worker.js, vite.config.js, package.json, AGENTS.md
+
